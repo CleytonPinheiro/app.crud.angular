@@ -89,7 +89,7 @@ input[type="date"] {
     font-family: 'mfn-icons';
     font-size:1em;
     color: #888;
-  }
+}
 
 ::placeholder {
     letter-spacing: 1.7px;

@@ -1,64 +1,70 @@
-<main >
-    <form action="" class="form-container">
 
-        <div class="d-flex">
-            <label for="cpf"> CPF *:</label>
-            <input type="number" placeholder="Digite o cpf" id="cpf" required>
+<form (ngSubmit)="submit()" [formGroup]="clienteForm" #formDir="ngForm" class="form-container">
+
+    <input type="hidden" formControlName="id">
+
+    <div class="d-flex">
+        <label for="cpf"> CPF *:</label>
+        <input type="number" formControlName="cpf" placeholder="Digite cpf" id="cpf">
+
+        <div *ngIf="cpf.invalid && formDir.submitted">
+        <p *ngIf="cpf.errors?.['required']"> Cpf é obrigatório. </p>
         </div>
+    </div>
 
-        <div class="d-flex column-2">
-            <label for="nome"> Nome: *</label>
-            <input type="text" placeholder="Digite o nome" id="nome" required>
-        </div>
+    <div class="d-flex column-2">
+        <label for="nome"> Nome: *</label>
+        <input type="text" formControlName="nome" placeholder="Digite o nome" id="nome">
+    </div>
 
-        <div class="d-flex">
-            <label for="nascimento"> Data Nascimento:</label>
-            <input type="date" id="nascimento" required>
-        </div>
+    <div class="d-flex">
+        <label for="nascimento"> Data Nascimento:</label>
+        <input type="date" formControlName="dataNascimento" id="nascimento">
+    </div>
 
-        <div class="d-flex">
-            <label> Sexo:</label>
-            <input type="radio" name="sexo" id="masculino">
-            <label for="masculino">  Masculino </label>
+    <div class="d-flex">
+        <label> Sexo:</label>
+        <input type="radio" name="sexo" id="masculino">
+        <label for="masculino">  Masculino </label>
 
-            <input type="radio" name="sexo" id="feminino">
-            <label for="feminino"> Feminino </label>
+        <input type="radio" name="sexo" id="feminino">
+        <label for="feminino"> Feminino </label>
 
-            <input type="radio" name="sexo" id="outro">
-            <label for="outro"> Outro </label>
-        </div>
+        <input type="radio" name="sexo" id="outro">
+        <label for="outro"> Outro </label>
+    </div>
 
-        <div class="d-flex">
-            <label for="cep"> CEP:</label>
-            <input type="number" placeholder="Digite o CEP" id="cep">
-        </div>
+    <div class="d-flex">
+        <label for="cep"> CEP:</label>
+        <input type="number" formControlName="cep" placeholder="Digite cep" id="cep">
+    </div>
 
-        <div class="d-flex column-2">
-            <label for="estado">Estado:</label>
-            <select class="custom-select" name="estado" id="estado">
-                <option value="" >Cidade</option>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi" selected>Audi</option>
-            </select>
+    <div class="d-flex column-2">
+        <label for="estado">Estado:</label>
+        <select class="custom-select" name="estado" id="estado">
+        <option value="" >Cidade</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi" selected>Audi</option>
+        </select>
 
-            <label for="cidade">Cidade:</label>
-            <select class="custom-select" name="cidade" id="cidade">
-                <option value="" >Cidade</option>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi" selected>Audi</option>
-            </select>
-        </div>
+        <label for="cidade">Cidade:</label>
+        <select formControlName="estado" class="custom-select" name="cidade" id="cidade">
+        <option value="" >Cidade</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi" selected>Audi</option>
+        </select>
+    </div>
 
-        <div class="d-flex column-2">
-            <label for="endereco"> Endereço *:</label>
-            <input type="text" placeholder="Digite o endereço" id="endereco" required>
-        </div>
+    <div class="d-flex column-2">
+        <label for="endereco"> Endereço *:</label>
+        <input formControlName="endereco" type="text" placeholder="Digite o endereço" id="endereco">
+    </div>
 
-        <input type="reset" value="Cancelar"/>
-        <input type="submit" value="Salvar" />
-	  </form>
-</main>
+    <input type="reset" value="Cancelar"/>
+    <input type="submit" value="{{ btnText }}" />
+</form>
+
