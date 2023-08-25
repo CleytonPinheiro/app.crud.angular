@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
-import { Cliente } from 'src/app/cliente';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { ApiIbgeServiceService } from 'src/app/services/api-ibge-service.service';
+import { Cliente } from 'src/app/cliente';
 
 @Component({
 	selector: 'app-cliente-form',
@@ -12,13 +13,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ClienteFormComponent implements OnInit  {
     @Output() onSubmit = new EventEmitter<Cliente>();
     @Input() btnText!: string;
+    @Input() ufs!: {};
+    @Input() citiesByUf!: {};
     @Input() clienteData: Cliente | null = null;
 
-    clienteForm!: FormGroup;
+	  clienteForm!: FormGroup;
+	  selectedUf: string = '';
+    // citiesByUf!: {};
 
-    constructor() {	}
+    constructor(
+        private apiIbgeService: ApiIbgeServiceService
+    ) { }
 
-    ngOnInit(): void {
+	  ngOnInit(): void {
         this.clienteForm = new FormGroup({
             id: new FormControl(this.clienteData ? this.clienteData.id : ''),
             cpf: new FormControl(this.clienteData ? this.clienteData.cpf : '', [Validators.required]),
@@ -26,51 +33,62 @@ export class ClienteFormComponent implements OnInit  {
             dataNascimento: new FormControl(this.clienteData ? this.clienteData.dataNascimento : ''),
             sexo: new FormControl(this.clienteData ? this.clienteData.sexo : ''),
             cep: new FormControl(this.clienteData ? this.clienteData.cep : ''),
-            estado: new FormControl(this.clienteData ? this.clienteData.estado : ''),
+            estado: new FormControl(this.clienteData ? this.clienteData.estado: ''),
             cidade: new FormControl(this.clienteData ? this.clienteData.cidade : ''),
             endereco: new FormControl(this.clienteData ? this.clienteData.endereco : ''),
         });
+
+            this.clienteForm.get('estado')?.valueChanges.subscribe((selectedValueUf: string) => {
+                this.selectedUf = selectedValueUf;
+
+                this.getCitiesByUf();
+            }
+        );
     }
 
-    get id() {
-        return this.clienteForm.get('id')!;
+    getCitiesByUf()  {
+        this.apiIbgeService.getCitiesByUf(this.selectedUf).subscribe((data) => {
+            this.citiesByUf = data;
+        });
     }
 
-    get cpf() {
-        return this.clienteForm.get('cpf')!;
-    }
+	get id() {
+		return this.clienteForm.get('id')!;
+	}
 
-    get nome() {
-        return this.clienteForm.get('nome')!;
-    }
+	get cpf() {
+		return this.clienteForm.get('cpf')!;
+	}
 
-    get endereco() {
-        return this.clienteForm.get('endereco')!;
-    }
+	get nome() {
+		return this.clienteForm.get('nome')!;
+	}
 
-    get dataNascimento() {
-        return this.clienteForm.get('dataNascimento')!;
-    }
+	get endereco() {
+		return this.clienteForm.get('endereco')!;
+	}
 
-    get sexo() {
-        return this.clienteForm.get('sexo')!;
-        }
-    get cep() {
-        return this.clienteForm.get('cep')!;
-    }
-    get estado() {
-        return this.clienteForm.get('estado')!;
-        }
-    get cidade() {
-        return this.clienteForm.get('cidade')!;
-    }
+	get dataNascimento() {
+		return this.clienteForm.get('dataNascimento')!;
+	}
 
-    submit() {
-        if(this.clienteForm.invalid) {
-        console.log('Form invalido: ', this.clienteForm.errors);
-            return;
-        }
-
-        this.onSubmit.emit(this.clienteForm.value);
-    }
+	get sexo() {
+		return this.clienteForm.get('sexo')!;
+		}
+	get cep() {
+		return this.clienteForm.get('cep')!;
+	}
+	get estado() {
+		return this.clienteForm.get('estado')!;
+		}
+	get cidade() {
+		return this.clienteForm.get('cidade')!;
+	}
+	submit() {
+		if(this.clienteForm.invalid) {
+			console.log('Form invalido: ', this.clienteForm.errors);
+			return;
+		}
+		this.onSubmit.emit(this.clienteForm.value);
+	}
 }

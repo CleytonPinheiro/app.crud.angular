@@ -25,7 +25,7 @@
     <div class="d-flex">
         <label> Sexo:</label>
         <input type="radio" name="sexo" id="masculino">
-        <label for="masculino">  Masculino </label>
+        <label for="masculino"> Masculino </label>
 
         <input type="radio" name="sexo" id="feminino">
         <label for="feminino"> Feminino </label>
@@ -41,21 +41,15 @@
 
     <div class="d-flex column-2">
         <label for="estado">Estado:</label>
-        <select class="custom-select" name="estado" id="estado">
-        <option value="" >Cidade</option>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi" selected>Audi</option>
+        <select class="custom-select" formControlName="estado" name="estado" id="estado">
+            <option value=""> UF </option>
+            <option *ngFor="let uf of ufs | keyvalue" [value]="uf.value['sigla']"> {{ uf.value['sigla'] }}</option>
         </select>
 
         <label for="cidade">Cidade:</label>
-        <select formControlName="estado" class="custom-select" name="cidade" id="cidade">
-        <option value="" >Cidade</option>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi" selected>Audi</option>
+        <select formControlName="cidade" class="custom-select" name="cidade" id="cidade">
+            <option value=""> Cidade </option>
+            <option *ngFor="let city of citiesByUf | keyvalue" [value]="city.value['nome']"> {{ city.value['nome'] }}</option>
         </select>
     </div>
 
