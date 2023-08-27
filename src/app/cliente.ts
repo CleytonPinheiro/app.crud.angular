@@ -2,10 +2,11 @@ export interface Cliente {
   id?: number;
   cpf: number,
   nome: string,
-  dataNascimento: Date,
+  dataNascimento: string,
   sexo: string,
   cep: number,
   estado: string,
   cidade: string,
-  endereco: string
+  endereco: string,
+  created_at: string
 }

@@ -11,6 +11,7 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { ClienteFormComponent } from './components/template/cliente-form/cliente-form.component';
 import { MessagesComponent } from './components/template/messages/messages.component';
 import { NewClienteComponent } from './components/template/new-cliente/new-cliente.component';
+import { ListaClientesComponent } from './components/template/lista-clientes/lista-clientes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NewClienteComponent } from './components/template/new-cliente/new-clien
     FooterComponent,
     ClienteFormComponent,
     MessagesComponent,
-    NewClienteComponent
+    NewClienteComponent,
+    ListaClientesComponent
   ],
   imports: [
 	BrowserModule,

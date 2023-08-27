@@ -1,0 +1,32 @@
+<table>
+    <thead>
+        <tr>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Estado</th>
+            <th>Cidade</th>
+            <th>Endereço</th>
+            <th>Nasc.</th>
+            <th>Data cadastro</th>
+            <th>AÇÕES</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let cliente of allClientes">
+            <td>{{ cliente.cpf }}</td>
+            <td>{{ cliente.nome }}</td>
+            <td>{{ cliente.dataNascimento }}</td>
+            <td>{{ cliente.estado }}</td>
+            <td>{{ cliente.cidade }}</td>
+            <td>{{ cliente.endereco }}</td>
+            <td>{{ cliente.created_at }}</td>
+            <td>
+                <div>
+                <img src="./../../../../assets/images/editar-48.png" alt="ícone para editar um usuário">
+                <img src="./../../../../assets/images/lixo-48.png" alt="ícone para excluir um usuário">
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
