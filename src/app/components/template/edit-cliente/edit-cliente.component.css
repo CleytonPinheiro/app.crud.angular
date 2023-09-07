@@ -3,7 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80vw;
+  margin: 0 auto;
+  width: 80%;
   height: 70vh;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }

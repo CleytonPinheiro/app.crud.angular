@@ -1,0 +1,7 @@
+<div *ngIf="cliente" class="container">
+  <h3>Atualizar cliente - <span> {{ cliente.nome }}</span></h3>
+
+  <app-cliente-form [ufs]="ufs" (onSubmit)="editHandler($event)" [clienteData]="cliente" [btnText]="btnText">
+  </app-cliente-form>
+
+</div>

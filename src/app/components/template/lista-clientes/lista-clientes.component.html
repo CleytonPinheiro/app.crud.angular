@@ -1,32 +1,42 @@
-<table>
+<div *ngIf="allClientes.length > 0" class="container">
+  <h3>Clientes cadastrados</h3>
+
+  <table>
     <thead>
-        <tr>
-            <th>CPF</th>
-            <th>Nome</th>
-            <th>Estado</th>
-            <th>Cidade</th>
-            <th>Endereço</th>
-            <th>Nasc.</th>
-            <th>Data cadastro</th>
-            <th>AÇÕES</th>
-        </tr>
+      <tr>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Estado</th>
+        <th>Cidade</th>
+        <th>Endereço</th>
+        <th>Aniversário</th>
+        <th>Data cadastro</th>
+        <th>Ações</th>
+      </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor="let cliente of allClientes">
-            <td>{{ cliente.cpf }}</td>
-            <td>{{ cliente.nome }}</td>
-            <td>{{ cliente.dataNascimento }}</td>
-            <td>{{ cliente.estado }}</td>
-            <td>{{ cliente.cidade }}</td>
-            <td>{{ cliente.endereco }}</td>
-            <td>{{ cliente.created_at }}</td>
-            <td>
-                <div>
-                <img src="./../../../../assets/images/editar-48.png" alt="ícone para editar um usuário">
-                <img src="./../../../../assets/images/lixo-48.png" alt="ícone para excluir um usuário">
-                </div>
-            </td>
-        </tr>
+      <tr *ngFor="let cliente of allClientes">
+        <td>{{ cliente.cpf }}</td>
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.estado }}</td>
+        <td>{{ cliente.cidade }}</td>
+        <td>{{ cliente.endereco }}</td>
+        <td class="date">{{ cliente.data_nascimento }}</td>
+        <td class="date">{{ cliente.created_at | date:"dd/MM/yy" }}</td>
+        <td>
+          <div class="actions">
+            <a routerLink="cliente/edit/{{ cliente.id }}" class="edit-btn">
+              <img src="./../../../../assets/images/editar-48.png" alt="ícone para editar um usuário">
+              Editar
+            </a>
+
+            <button (click)="removeCliente(cliente.id!)" class="remove-btn">
+              <img src="./../../../../assets/images/lixo-48.png" alt="ícone para excluir um usuário">
+            </button>
+          </div>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
+</div>

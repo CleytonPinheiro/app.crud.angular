@@ -1,92 +1,93 @@
 form {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 30px 15px;
-    padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 30px 10px;
+  padding: 30px;
+  max-height: 50vh;
 }
 
 label {
-    padding: 5px;
-    width: 6em;
-    font-size: 1.3em;
+  padding: 8px;
+  width: 5em;
+  font-size: 1.1em;
 }
 
- .custom-select {
-    height: 43px;
-    font-family: 'mfn-icons';
+.custom-select {
+  height: 43px;
+  font-family: 'mfn-icons';
 }
 
 input,
 select {
-    width: 100%;
-    padding: 11px;
-    border-radius: 3px;
-    border: 1px solid #888;
-    height: 18px;
-    font-size: 1em;
-    transition: font-size 0.2s;
+  width: 100%;
+  padding: 11px;
+  border-radius: 3px;
+  border: 1px solid #888;
+  height: 18px;
+  font-size: 1em;
+  transition: font-size 0.2s;
 }
 
 .d-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 15px 1px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px 1px 15px;
 }
 
 .column-2 {
-    grid-column: span 2;
+  grid-column: span 2;
 }
 
 .column-3 {
-    grid-column: span 3;
+  grid-column: span 3;
 }
 
 .d-block {
-    display:block;
+  display: block;
 }
 
 input[type=submit] {
-    grid-row: 4;
-    grid-column: 4;
-    padding-bottom: 40px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1.6em;
-    letter-spacing: 5px;
+  grid-row: 4;
+  grid-column: 4;
+  padding-bottom: 40px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.6em;
+  letter-spacing: 5px;
 }
 
 input[type=reset] {
-    grid-row: 4;
-    grid-column: 3;
-    padding-bottom: 40px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 90%;
-    font-size: 1.3em;
-    letter-spacing: 2px;
+  grid-row: 4;
+  grid-column: 3;
+  padding-bottom: 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 90%;
+  font-size: 1.3em;
+  letter-spacing: 2px;
 }
 
 input[type=submit]:focus {
-	  background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 input[type="date"] {
-    font-family: 'mfn-icons';
-    font-size:1em;
-    color: #888;
+  font-family: 'mfn-icons';
+  font-size: 1em;
+  color: #888;
 }
 
 ::placeholder {
-    letter-spacing: 1.7px;
-    color: #888;
-    font-size: 1em;
+  letter-spacing: 1.7px;
+  color: #888;
+  font-size: 1em;
 }
 
 select option:checked {

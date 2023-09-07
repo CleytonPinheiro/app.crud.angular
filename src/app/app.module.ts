@@ -12,25 +12,28 @@ import { ClienteFormComponent } from './components/template/cliente-form/cliente
 import { MessagesComponent } from './components/template/messages/messages.component';
 import { NewClienteComponent } from './components/template/new-cliente/new-cliente.component';
 import { ListaClientesComponent } from './components/template/lista-clientes/lista-clientes.component';
+import { EditClienteComponent } from './components/template/edit-cliente/edit-cliente.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    ClienteFormComponent,
-    MessagesComponent,
-    NewClienteComponent,
-    ListaClientesComponent
-  ],
-  imports: [
-	BrowserModule,
-	AppRoutingModule,
-	FormsModule,
-	ReactiveFormsModule,
-  HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		ClienteFormComponent,
+		MessagesComponent,
+		NewClienteComponent,
+		ListaClientesComponent,
+  EditClienteComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

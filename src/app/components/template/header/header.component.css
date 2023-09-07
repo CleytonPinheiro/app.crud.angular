@@ -1,28 +1,39 @@
-
 nav {
   display: flex;
   justify-content: space-around;
   padding: 1em;
   border-bottom: 1px solid #777;
-  height: 8vh;
+  height: 7vh;
 }
 
-.brand, .links {
+.brand,
+.links {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-img {
-  width: 85px;
+.brand-links {
+  display: flex;
+  padding: 50px;
+  width: 60%;
+}
+
+.brand-links img {
+  margin-right: 20px;
+}
+
+.brand img {
+  width: 60%;
   margin-right: 0.2em;
 }
 
 .links li {
-  margin-right: 1em;
+  margin-right: 3em;
   list-style: none;
 }
 
 .links a {
   padding: .1em .3em;
+  text-decoration: none;
 }

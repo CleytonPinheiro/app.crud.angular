@@ -10,17 +10,35 @@ import { Cliente } from '../cliente';
   providedIn: 'root'
 })
 export class ClientesService {
-	private baseApiUrl = environment.baseApiUrl;
-	private apiUrl = `${this.baseApiUrl}/clientes`;
+  private baseApiUrl = environment.baseApiUrl;
+  private apiUrl = `${this.baseApiUrl}/clientes`;
 
-	constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getClientes(): Observable<Response<Cliente[]>> {
     return this.http.get<Response<Cliente[]>>(this.apiUrl);
   }
 
-	createCliente(formData: FormData): Observable<FormData> {
+  getClienteById(id: number): Observable<Response<Cliente>> {
+    const url = `${this.apiUrl}/${id}`;
 
-		return this.http.post<FormData>(this.apiUrl, formData);
-	}
+    return this.http.get<Response<Cliente>>(url);
+  }
+
+  updateCliente(id: number, formData: FormData): Observable<FormData> {
+    const url = `${this.apiUrl}/${id}`;
+
+    return this.http.put<FormData>(url, formData);
+  }
+
+  createCliente(formData: FormData): Observable<FormData> {
+
+    return this.http.post<FormData>(this.apiUrl, formData);
+  }
+
+  removeCliente(id: number) {
+    const url = `${this.apiUrl}/${id}`;
+
+    return this.http.delete(url);
+  }
 }

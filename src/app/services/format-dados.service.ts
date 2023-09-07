@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FormatDadosService {
 
-  constructor() { }
+    constructor() { }
 
-  formatDate(date: string) {
-    return new Date(date).toLocaleDateString('pt-BR');
-  }
+    formatDate(date: string) {
+        return new Date(date).toLocaleDateString('pt-BR');
+    }
 }

@@ -1,64 +1,66 @@
-
 <form (ngSubmit)="submit()" [formGroup]="clienteForm" #formDir="ngForm" class="form-container">
 
-    <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="id">
 
-    <div class="d-flex">
-        <label for="cpf"> CPF *:</label>
-        <input type="number" formControlName="cpf" placeholder="Digite cpf" id="cpf">
+  <div class="d-flex">
+    <label for="cpf"> CPF *:</label>
+    <input type="number" formControlName="cpf" placeholder="Digite cpf" id="cpf">
 
-        <div *ngIf="cpf.invalid && formDir.submitted">
-        <p *ngIf="cpf.errors?.['required']"> Cpf é obrigatório. </p>
-        </div>
+    <div *ngIf="cpf.invalid && formDir.submitted">
+      <p *ngIf="cpf.errors?.['required']"> Cpf é obrigatório. </p>
     </div>
+  </div>
 
-    <div class="d-flex column-2">
-        <label for="nome"> Nome: *</label>
-        <input type="text" formControlName="nome" placeholder="Digite o nome" id="nome">
-    </div>
+  <div class="d-flex column-2">
+    <label for="nome"> Nome: *</label>
+    <input type="text" formControlName="nome" placeholder="Digite o nome" id="nome">
+  </div>
 
-    <div class="d-flex">
-        <label for="nascimento"> Data Nascimento:</label>
-        <input type="date" formControlName="dataNascimento" id="nascimento">
-    </div>
+  <div class="d-flex">
+    <label for="nascimento"> Data Nascimento:</label>
+    <input type="date" formControlName="dataNascimento" id="nascimento">
+  </div>
 
-    <div class="d-flex">
-        <label> Sexo:</label>
-        <input type="radio" name="sexo" id="masculino">
-        <label for="masculino"> Masculino </label>
+  <div class="d-flex">
+    <label> Sexo:</label>
+    <label for="masculino"> Masculino
+      <input type="radio" formControlName="sexo" value="masculino" name="sexo" id="masculino">
+    </label>
 
-        <input type="radio" name="sexo" id="feminino">
-        <label for="feminino"> Feminino </label>
+    <label for="feminino"> Feminino </label>
+    <input type="radio" formControlName="sexo" value="feminino" name="sexo" id="feminino">
 
-        <input type="radio" name="sexo" id="outro">
-        <label for="outro"> Outro </label>
-    </div>
+    <label for="outro"> Outro </label>
+    <input type="radio" formControlName="sexo" value="outro" name="sexo" id="outro">
+  </div>
 
-    <div class="d-flex">
-        <label for="cep"> CEP:</label>
-        <input type="number" formControlName="cep" placeholder="Digite cep" id="cep">
-    </div>
+  <div class="d-flex">
+    <label for="cep"> CEP:</label>
+    <input type="number" formControlName="cep" placeholder="Digite cep" id="cep">
+  </div>
 
-    <div class="d-flex column-2">
-        <label for="estado">Estado:</label>
-        <select class="custom-select" formControlName="estado" name="estado" id="estado">
-            <option value=""> UF </option>
-            <option *ngFor="let uf of ufs | keyvalue" [value]="uf.value['sigla']"> {{ uf.value['sigla'] }}</option>
-        </select>
+  <div class="d-flex">
+    <label for="estado">Estado:</label>
+    <select class="custom-select" formControlName="estado" name="estado" id="estado">
+      <option value=""> UF </option>
+      <option *ngFor="let uf of ufs | keyvalue" [value]="uf.value['sigla']"> {{ uf.value['sigla'] }}</option>
+    </select>
+  </div>
 
-        <label for="cidade">Cidade:</label>
-        <select formControlName="cidade" class="custom-select" name="cidade" id="cidade">
-            <option value=""> Cidade </option>
-            <option *ngFor="let city of citiesByUf | keyvalue" [value]="city.value['nome']"> {{ city.value['nome'] }}</option>
-        </select>
-    </div>
+  <div class="d-flex  column-2">
+    <label for="cidade">Cidade:</label>
+    <select formControlName="cidade" class="custom-select" name="cidade" id="cidade">
+      <option value=""> Cidade </option>
+      <option *ngFor=" let city of citiesByUf | keyvalue" [value]="city.value['nome']"> {{ city.value['nome'] }}
+      </option>
+    </select>
+  </div>
 
-    <div class="d-flex column-2">
-        <label for="endereco"> Endereço *:</label>
-        <input formControlName="endereco" type="text" placeholder="Digite o endereço" id="endereco">
-    </div>
+  <div class="d-flex">
+    <label for="endereco"> End.: *</label>
+    <input formControlName="endereco" type="text" placeholder="Digite o endereço" id="endereco">
+  </div>
 
-    <input type="reset" value="Cancelar"/>
-    <input type="submit" value="{{ btnText }}" />
+  <input type="reset" value="Cancelar" />
+  <input type="submit" value="{{ btnText }}" />
 </form>
-

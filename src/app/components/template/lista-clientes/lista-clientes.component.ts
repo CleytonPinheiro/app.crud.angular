@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ClientesService } from 'src/app/services/clientes.service';
-import { FormatDadosService } from 'src/app/services/format-dados.service';
 import { Cliente } from 'src/app/cliente';
+import { MessagesService } from 'src/app/services/messages.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -16,19 +17,28 @@ export class ListaClientesComponent implements OnInit {
   dataCadastro!: string;
 
   constructor(
-    private formatDados: FormatDadosService,
+    private messageService: MessagesService,
+    private router: Router,
     private clienteService: ClientesService) { }
 
   ngOnInit(): void {
-    this.clienteService.getClientes().subscribe((cliente) => {
-      const data = cliente.data;
+    this.listaClientes();
+  }
 
-      data.map((item) => {
-        this.dataCadastro = this.formatDados.formatDate(item.created_at);
-        this.dataNascimento = this.formatDados.formatDate(item.dataNascimento);
-      });
+  async listaClientes() {
+    await this.clienteService.getClientes().subscribe((cliente) => {
 
-      this.allClientes = data;
+      if (cliente.data) {
+        this.allClientes = cliente.data;
+      }
+    });
+  }
+
+  removeCliente(id: number) {
+    console.log(id);
+    this.clienteService.removeCliente(id).subscribe((data) => {
+      this.messageService.add("Cliente `${data}` excluído com sucesso.:");
+      this.router.navigate(['/']);
     });
   }
 }
